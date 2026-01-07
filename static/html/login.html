@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - PAS</title>
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/auth.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="login-title">PAS 登录</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="account">账号</label>
+                <input type="text" id="account" name="account" placeholder="请输入账号" required>
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="password" placeholder="请输入密码" required>
+            </div>
+            <button type="submit" class="btn-login" id="btnLogin">登 录</button>
+        </form>
+        <div class="register-link">
+            还没有账号？<a href="/static/html/register.html">立即注册</a>
+        </div>
+    </div>
+
+    <!-- Toast 容器 -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+/* auth.css - 登录/注册页面样式 */
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container,
+.register-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-title,
+.register-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* 覆盖 common.css 的 form-group 样式 */
+.login-container .form-group,
+.register-container .form-group {
+    margin-bottom: 20px;
+}
+
+.login-container .form-group label,
+.register-container .form-group label {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.login-container .form-group input,
+.register-container .form-group input {
+    padding: 12px 15px;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+}
+
+.btn-login,
+.btn-register {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-login:hover,
+.btn-register:hover {
+    opacity: 0.9;
+}
+
+.btn-login:disabled,
+.btn-register:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Auth 页面按钮加载状态 - 稍大一点 */
+.btn-login.btn-loading::after,
+.btn-register.btn-loading::after {
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+}
+
+.register-link,
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.register-link a,
+.login-link a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+/* Auth 页面 Toast 位置调整 */
+.login-container ~ .toast-container,
+.register-container ~ .toast-container {
+    top: 20px;
+}

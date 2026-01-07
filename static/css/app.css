@@ -1,0 +1,1649 @@
+/* app.css - 主应用样式 */
+
+body {
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.header h1 { font-size: 20px; }
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.9);
+    font-size: 14px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.btn-logout {
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* Container & Sidebar */
+.container {
+    display: flex;
+    margin-top: 56px;
+    min-height: calc(100vh - 56px);
+}
+
+.sidebar {
+    width: 220px;
+    background: #fff;
+    border-right: 1px solid #e8e8e8;
+    padding-top: 20px;
+}
+
+.menu-item {
+    padding: 12px 24px;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.menu-item:hover { background: #f5f5f5; }
+
+.menu-item.active {
+    background: #e6f7ff;
+    border-left-color: #667eea;
+    color: #667eea;
+}
+
+.content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+/* Card */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.card-title { font-size: 18px; color: #333; }
+
+/* Buttons */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: opacity 0.3s;
+}
+
+.btn:hover { opacity: 0.8; }
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-danger { background: #ff4d4f; color: white; }
+.btn-success { background: #52c41a; color: white; }
+.btn-warning { background: #faad14; color: white; }
+.btn-sm { padding: 4px 12px; font-size: 12px; }
+
+.btn-cancel {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.btn-icon {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.btn-icon:hover { opacity: 0.85; }
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th { background: #fafafa; color: #666; font-weight: 500; }
+
+.actions button { margin-right: 8px; }
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
+.pagination span { color: #666; }
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.modal.show { display: flex; }
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+}
+
+.modal-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.modal-body { padding: 20px; }
+
+.modal-footer {
+    padding: 12px 20px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.modal-footer button { margin-left: 10px; }
+
+.page-hidden { display: none !important; }
+
+/* Status Tags */
+.status-tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.status-active { background: #e6f7ff; color: #1890ff; }
+.status-closed { background: #fff1f0; color: #ff4d4f; }
+.status-running { background: #e6f7ff; color: #1890ff; }
+.status-stopped { background: #f5f5f5; color: #999; }
+.status-paused { background: #fff7e6; color: #fa8c16; }
+
+/* Option Tags */
+.option-yes { background: #f6ffed; color: #52c41a; }
+.option-no { background: #fff1f0; color: #ff4d4f; }
+
+.option-clickable {
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.option-clickable:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.option-clickable.option-yes:hover { background: #d9f7be; }
+.option-clickable.option-no:hover { background: #ffccc7; }
+
+/* Hint Styles */
+.hint-text {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+    line-height: 1.8;
+}
+
+.hint-box {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-top: 8px;
+}
+
+.hint-title {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.hint-url {
+    background: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    margin: 6px 0;
+    border: 1px dashed #ddd;
+}
+
+.hint-box a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.hint-box a:hover {
+    text-decoration: underline;
+}
+
+.hint-box code {
+    background: #e8e8e8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+/* Expand Button */
+.btn-expand {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.btn-expand:hover { background: #e8e8e8; }
+.btn-expand.expanded { background: #e6f7ff; border-color: #91d5ff; }
+
+/* Markets Grid */
+.markets-row { display: none; }
+.markets-row.show { display: table-row; }
+
+.markets-cell {
+    padding: 0 !important;
+    background: #fafafa;
+}
+
+.markets-container {
+    padding: 16px 20px;
+    border-top: 1px solid #eee;
+}
+
+.markets-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.markets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.market-card {
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 16px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.market-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.market-question {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.market-outcomes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.outcome-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.outcome-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.outcome-price {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 16px;
+    min-width: 60px;
+}
+
+.outcome-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.market-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+    color: #888;
+}
+
+.market-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.loading-markets {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    gap: 12px;
+    color: #666;
+}
+
+.loading-markets .spinner {
+    width: 24px;
+    height: 24px;
+    border-width: 2px;
+}
+
+.no-markets {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+}
+
+/* Event Cards */
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.event-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.event-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.event-card-main {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+}
+
+.event-card-image {
+    width: 120px;
+    height: 80px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #f5f5f5;
+}
+
+.event-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.event-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.event-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.event-card-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.event-card-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.event-card-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.event-stat {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+}
+
+.event-stat-label { color: #999; }
+.event-stat-value { color: #333; font-weight: 500; }
+.event-stat-value.volume { color: #52c41a; }
+.event-stat-value.liquidity { color: #1890ff; }
+
+.event-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+    color: #999;
+    padding-top: 8px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.event-card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.category-tag {
+    background: #f0f5ff;
+    color: #2f54eb;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.event-markets {
+    display: none;
+    background: #fafafa;
+    border-top: 1px solid #e8e8e8;
+    padding: 16px;
+}
+
+.event-markets.show {
+    display: block;
+}
+
+.no-events {
+    text-align: center;
+    color: #999;
+    padding: 40px;
+}
+
+/* User Dropdown */
+.user-dropdown {
+    position: relative;
+}
+
+.user-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.user-dropdown-trigger:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.dropdown-arrow {
+    font-size: 10px;
+    transition: transform 0.2s;
+}
+
+.user-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.user-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    min-width: 160px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.user-dropdown.open .user-dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+    background: #f5f5f5;
+}
+
+.dropdown-item-icon {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: #eee;
+    margin: 4px 0;
+}
+
+.dropdown-item.danger {
+    color: #ff4d4f;
+}
+
+.dropdown-item.danger:hover {
+    background: #fff1f0;
+}
+
+/* Settings Modal */
+.settings-modal .modal-content {
+    width: 480px;
+}
+
+.form-group-hint {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+}
+
+.form-group input[type="password"] {
+    font-family: monospace;
+}
+
+.api-key-group {
+    position: relative;
+}
+
+.api-key-group input {
+    padding-right: 40px;
+}
+
+.toggle-visibility {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    font-size: 14px;
+    padding: 4px;
+}
+
+.toggle-visibility:hover {
+    color: #666;
+}
+
+/* Form Select */
+.form-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* App Toast Position */
+.toast-container {
+    top: 70px;
+}
+
+.event-image {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Role Grid */
+.role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.role-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.role-item:hover {
+    background: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.role-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.role-item input[type="checkbox"]:checked + .role-label {
+    color: #667eea;
+    font-weight: 500;
+}
+
+.role-label {
+    font-size: 13px;
+    color: #495057;
+}
+
+/* Permission Tags */
+.permission-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.perm-tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* Dynamic role tags based on role bit values */
+.perm-role-1 { background: #fff1f0; color: #cf1322; }  /* 管理员 */
+.perm-role-2 { background: #e6f7ff; color: #1890ff; }  /* 登录 */
+.perm-role-4 { background: #f6ffed; color: #52c41a; }  /* 库存管理 */
+.perm-role-8 { background: #fff7e6; color: #fa8c16; }  /* 卡券申请 */
+
+/* Wallet Balance */
+.wallet-balance {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.95);
+}
+
+.wallet-content,
+.wallet-loading,
+.wallet-empty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.wallet-balance .balance-icon {
+    font-size: 14px;
+}
+
+.wallet-balance .balance-value {
+    font-weight: 600;
+    color: #fff;
+}
+
+.wallet-balance .balance-unit {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+}
+
+.wallet-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: wallet-spin 0.8s linear infinite;
+}
+
+@keyframes wallet-spin {
+    to { transform: rotate(360deg); }
+}
+
+.wallet-empty {
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+}
+
+.wallet-empty:hover {
+    color: rgba(255,255,255,0.9);
+}
+
+/* ========== 卡券管理样式 ========== */
+
+/* 筛选栏 */
+.filter-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-item label {
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+}
+
+.filter-item select {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 120px;
+}
+
+/* 头部操作按钮 */
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* 卡券状态标签 */
+.status-taken {
+    background: #fff1f0;
+    color: #ff4d4f;
+}
+
+.status-available {
+    background: #f6ffed;
+    color: #52c41a;
+}
+
+/* 类型标签 */
+.type-tag {
+    background: #e6f7ff;
+    color: #1890ff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* 卡券码样式 */
+.coupon-code {
+    font-family: monospace;
+    font-weight: 500;
+    color: #333;
+}
+
+/* 文本样式 */
+.text-muted {
+    color: #999;
+}
+
+/* 必填标识 */
+.required {
+    color: #ff4d4f;
+}
+
+/* 表单文本域 */
+.form-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+    font-family: monospace;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* 导入弹窗 */
+.import-modal .modal-content {
+    width: 500px;
+}
+
+/* 导入结果样式 */
+.import-result {
+    padding: 10px 0;
+}
+
+.result-summary {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.result-item {
+    text-align: center;
+    padding: 12px 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    min-width: 80px;
+}
+
+.result-item.success {
+    background: #f6ffed;
+}
+
+.result-item.warning {
+    background: #fff7e6;
+}
+
+.result-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.result-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.result-item.success .result-value {
+    color: #52c41a;
+}
+
+.result-item.warning .result-value {
+    color: #faad14;
+}
+
+.result-duplicates {
+    background: #fff7e6;
+    border: 1px solid #ffd591;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 12px;
+}
+
+.duplicates-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #d46b08;
+    margin-bottom: 8px;
+}
+
+.duplicates-list {
+    font-size: 12px;
+    color: #666;
+    font-family: monospace;
+    word-break: break-all;
+    line-height: 1.6;
+}
+
+/* 移动端卡片列表（默认隐藏） */
+.coupon-card-list {
+    display: none;
+}
+
+.coupon-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.coupon-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.coupon-card-id {
+    font-size: 12px;
+    color: #999;
+}
+
+.coupon-card-code {
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    word-break: break-all;
+}
+
+.coupon-card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.coupon-card-time {
+    font-size: 12px;
+    color: #999;
+}
+
+.coupon-card-actions {
+    display: flex;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+}
+
+.coupon-card-actions .btn {
+    flex: 1;
+}
+
+/* 移动端菜单按钮 */
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 150;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+}
+
+.mobile-menu-overlay.show {
+    display: block;
+}
+
+/* 桌面端显示/隐藏控制 */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* ========== 响应式布局 ========== */
+
+/* 平板端 (768px - 1024px) */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .content {
+        padding: 16px;
+    }
+
+    .header {
+        padding: 12px 20px;
+    }
+
+    .result-summary {
+        gap: 16px;
+    }
+
+    .result-item {
+        padding: 10px 16px;
+        min-width: 70px;
+    }
+}
+
+/* 移动端 (< 768px) */
+@media (max-width: 768px) {
+    /* Header */
+    .header {
+        padding: 10px 16px;
+    }
+
+    .header h1 {
+        font-size: 16px;
+    }
+
+    .header-right {
+        gap: 8px;
+    }
+
+    .user-dropdown-trigger span {
+        display: none;
+    }
+
+    .dropdown-arrow {
+        display: none;
+    }
+
+    /* Container & Sidebar */
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 56px;
+        width: 240px;
+        height: calc(100vh - 56px);
+        z-index: 100;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.mobile-open {
+        left: 0;
+    }
+
+    .content {
+        padding: 12px;
+        margin-left: 0;
+    }
+
+    /* 移动端菜单按钮显示 */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    /* Card */
+    .card {
+        padding: 12px;
+        border-radius: 6px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding-bottom: 12px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .header-actions {
+        width: 100%;
+    }
+
+    .header-actions .btn {
+        flex: 1;
+    }
+
+    /* 筛选栏 */
+    .filter-bar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .filter-item {
+        width: 100%;
+    }
+
+    .filter-item select {
+        flex: 1;
+    }
+
+    /* 表格 - 隐藏桌面端 */
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block !important;
+    }
+
+    /* 卡片列表 - 显示移动端 */
+    .coupon-card-list {
+        display: block;
+    }
+
+    /* 分页 */
+    .pagination {
+        justify-content: center;
+        margin-top: 16px;
+    }
+
+    .pagination button {
+        padding: 8px 16px;
+    }
+
+    /* 弹窗 */
+    .modal-content {
+        width: 95% !important;
+        max-width: 400px;
+        margin: 20px;
+    }
+
+    .modal-header {
+        padding: 14px 16px;
+        font-size: 15px;
+    }
+
+    .modal-body {
+        padding: 16px;
+    }
+
+    .modal-footer {
+        padding: 10px 16px;
+    }
+
+    .form-group {
+        margin-bottom: 14px;
+    }
+
+    /* 导入结果 */
+    .result-summary {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+    }
+
+    .result-label {
+        display: inline;
+        margin-bottom: 0;
+        margin-right: 8px;
+    }
+
+    .result-value {
+        display: inline;
+        font-size: 18px;
+    }
+
+    /* 用户表格响应式 */
+    #page-users table {
+        display: block;
+    }
+
+    #page-users thead {
+        display: none;
+    }
+
+    #page-users tbody {
+        display: block;
+    }
+
+    #page-users tr {
+        display: block;
+        margin-bottom: 12px;
+        background: #fff;
+        border: 1px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 12px;
+    }
+
+    #page-users td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    #page-users td:last-child {
+        border-bottom: none;
+        padding-top: 12px;
+    }
+
+    #page-users td::before {
+        content: attr(data-label);
+        font-weight: 500;
+        color: #666;
+    }
+
+    #page-users td.actions {
+        justify-content: flex-end;
+        gap: 8px;
+    }
+
+    #page-users td.actions::before {
+        display: none;
+    }
+
+    /* 权限标签响应式 */
+    .permission-tags {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    /* Toast */
+    .toast-container {
+        left: 10px;
+        right: 10px;
+        top: 60px;
+    }
+}
+
+/* 超小屏幕 (< 480px) */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 14px;
+    }
+
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .btn-sm {
+        padding: 4px 10px;
+        font-size: 11px;
+    }
+
+    .coupon-card-code {
+        font-size: 14px;
+    }
+
+    .coupon-card-actions {
+        flex-direction: column;
+    }
+
+    .coupon-card-actions .btn {
+        width: 100%;
+    }
+
+    .mobile-menu-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+/* 表格包装器 */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* ========== 我的卡券样式 ========== */
+
+/* 我的卡券卡片列表 */
+.my-coupon-card-list {
+    display: none;
+}
+
+.my-coupon-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.my-coupon-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.my-coupon-card-id {
+    font-size: 12px;
+    color: #999;
+}
+
+.my-coupon-card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.my-coupon-card-label {
+    font-size: 12px;
+    color: #666;
+}
+
+.my-coupon-card-time {
+    font-size: 13px;
+    color: #333;
+}
+
+.my-coupon-card-actions {
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+}
+
+.my-coupon-card-actions .btn {
+    width: 100%;
+}
+
+/* 详情弹窗样式 */
+.detail-modal .modal-content {
+    width: 420px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-size: 14px;
+    color: #666;
+}
+
+.detail-value {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.coupon-code-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.detail-code-wrapper {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px dashed #ddd;
+}
+
+.detail-code {
+    flex: 1;
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    word-break: break-all;
+}
+
+.btn-copy {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-copy:hover {
+    opacity: 0.9;
+}
+
+/* 移动端我的卡券响应式 */
+@media (max-width: 768px) {
+    .my-coupon-card-list {
+        display: block;
+    }
+
+    .detail-modal .modal-content {
+        width: 95% !important;
+    }
+
+    .detail-code-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .detail-code {
+        text-align: center;
+        padding-bottom: 8px;
+    }
+
+    .btn-copy {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 我的卡券表格响应式 */
+    #page-my-coupons table {
+        display: block;
+    }
+
+    #page-my-coupons thead {
+        display: none;
+    }
+
+    #page-my-coupons tbody {
+        display: block;
+    }
+
+    #page-my-coupons tr {
+        display: block;
+        margin-bottom: 12px;
+        background: #fff;
+        border: 1px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 12px;
+    }
+
+    #page-my-coupons td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    #page-my-coupons td:last-child {
+        border-bottom: none;
+        padding-top: 12px;
+    }
+
+    #page-my-coupons td::before {
+        content: attr(data-label);
+        font-weight: 500;
+        color: #666;
+    }
+
+    #page-my-coupons td.actions {
+        justify-content: flex-end;
+        gap: 8px;
+    }
+
+    #page-my-coupons td.actions::before {
+        display: none;
+    }
+}
+
+/* ========== 申领卡券弹窗样式 ========== */
+.stock-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+.stock-label {
+    font-size: 14px;
+    color: #666;
+}
+
+.stock-value {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.stock-value.has-stock {
+    color: #52c41a;
+}
+
+.stock-value.no-stock {
+    color: #ff4d4f;
+}
