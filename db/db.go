@@ -7,7 +7,7 @@ import (
 	"pionex-administrative-sys/utils/logger"
 	"time"
 
-	"gorm.io/driver/sqlite"
+	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )
