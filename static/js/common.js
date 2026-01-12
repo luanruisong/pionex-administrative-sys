@@ -1,5 +1,17 @@
 // common.js - 共享 JavaScript 函数
 
+// 预加载结果弹窗图片
+(function preloadResultImages() {
+    const images = [
+        '/static/image/ganbei.png',
+        '/static/image/iam_dead.png'
+    ];
+    images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+})();
+
 // Toast 提示
 function toast(message, type = 'info', duration = 3000) {
     const container = document.getElementById('toastContainer');
