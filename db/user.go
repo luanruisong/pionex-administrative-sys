@@ -89,3 +89,16 @@ func CountUsers(ctx context.Context) (int64, error) {
 	err := getDb(ctx).Model(&User{}).Count(&count).Error
 	return count, err
 }
+
+// GetUsersByIds 根据ID列表批量查询用户
+func GetUsersByIds(ctx context.Context, ids []int64) ([]*User, error) {
+	if len(ids) == 0 {
+		return nil, nil
+	}
+	var users []*User
+	err := getDb(ctx).Where("id IN ?", ids).Find(&users).Error
+	if err != nil {
+		return nil, err
+	}
+	return users, nil
+}

@@ -428,6 +428,7 @@ function renderCouponTable() {
             <td data-label="状态">${c.is_taken ?
                 '<span class="status-tag status-taken">已领取</span>' :
                 '<span class="status-tag status-available">未领取</span>'}</td>
+            <td data-label="领取人">${c.is_taken ? (c.taker_name || '-') : '-'}</td>
             <td data-label="创建时间">${formatTimestamp(c.created_at)}</td>
             <td class="actions">
                 ${!c.is_taken ? `
@@ -454,6 +455,12 @@ function renderCouponCards() {
                 <span class="type-tag">${c.type_name}</span>
                 <span class="coupon-card-time">${formatTimestamp(c.created_at)}</span>
             </div>
+            ${c.is_taken && c.taker_name ? `
+                <div class="coupon-card-taker">
+                    <span class="taker-label">领取人：</span>
+                    <span class="taker-name">${c.taker_name}</span>
+                </div>
+            ` : ''}
             ${!c.is_taken ? `
                 <div class="coupon-card-actions">
                     <button class="btn btn-primary btn-sm" onclick="showEditCouponModal(${c.id})">编辑</button>

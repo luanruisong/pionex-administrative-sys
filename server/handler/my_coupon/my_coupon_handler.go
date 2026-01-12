@@ -1,12 +1,15 @@
 package my_coupon
 
 import (
+	"errors"
 	"pionex-administrative-sys/db"
 	"pionex-administrative-sys/server/middleware"
 	"pionex-administrative-sys/utils"
 	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 // Register 注册路由
@@ -186,6 +189,29 @@ func takeHandler(c *gin.Context) {
 	}
 
 	userId := middleware.GetCurrentClaims(c).UserId
+
+	// 校验12小时内是否已领取过该类型卡券
+	lastCoupon, err := db.GetLastTakenCouponByTakerAndType(c.Request.Context(), userId, req.Type)
+	if err == nil {
+		// 找到了上次领取记录，检查时间间隔
+		lastTakenTime := time.UnixMilli(lastCoupon.UpdatedAt)
+		elapsed := time.Since(lastTakenTime)
+		if elapsed < 12*time.Hour {
+			remaining := 12*time.Hour - elapsed
+			hours := int(remaining.Hours())
+			minutes := int(remaining.Minutes()) % 60
+			utils.Resp(400, "领取过于频繁，请稍后再试", gin.H{
+				"message":           "同一类型卡券12小时内只能领取一张",
+				"remaining_hours":   hours,
+				"remaining_minutes": minutes,
+			}).Fail(c)
+			return
+		}
+	} else if !errors.Is(err, gorm.ErrRecordNotFound) {
+		// 查询出错（非"记录不存在"错误）
+		utils.Resp(500, "查询失败", gin.H{"error": err.Error()}).Fail(c)
+		return
+	}
 
 	// 获取一个可用的卡券
 	coupon, err := db.GetOneAvailableCouponByType(c.Request.Context(), req.Type)

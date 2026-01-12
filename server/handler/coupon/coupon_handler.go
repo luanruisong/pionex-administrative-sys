@@ -39,12 +39,13 @@ type CouponItem struct {
 	TypeName  string `json:"type_name"`
 	Creator   int64  `json:"creator"`
 	Taker     int64  `json:"taker"`
+	TakerName string `json:"taker_name"` // 领取者用户名
 	IsTaken   bool   `json:"is_taken"`
 	CreatedAt int64  `json:"created_at"`
 	UpdatedAt int64  `json:"updated_at"`
 }
 
-func toCouponItem(c *db.Coupon) CouponItem {
+func toCouponItem(c *db.Coupon, takerName string) CouponItem {
 	return CouponItem{
 		Id:        c.Id,
 		Coupon:    c.Coupon,
@@ -52,6 +53,7 @@ func toCouponItem(c *db.Coupon) CouponItem {
 		TypeName:  db.GetCouponTypeName(c.Type),
 		Creator:   c.Creator,
 		Taker:     c.Taker,
+		TakerName: takerName,
 		IsTaken:   c.IsTaken(),
 		CreatedAt: c.CreatedAt,
 		UpdatedAt: c.UpdatedAt,
@@ -234,9 +236,30 @@ func listHandler(c *gin.Context) {
 
 	total, _ := db.CountCouponsWithFilter(c.Request.Context(), filter)
 
+	// 收集已领取卡券的领取者ID
+	var takerIds []int64
+	for _, cp := range coupons {
+		if cp.IsTaken() {
+			takerIds = append(takerIds, cp.Taker)
+		}
+	}
+
+	// 批量查询领取者信息
+	takerMap := make(map[int64]string)
+	if len(takerIds) > 0 {
+		users, _ := db.GetUsersByIds(c.Request.Context(), takerIds)
+		for _, u := range users {
+			takerMap[u.Id] = u.Name
+		}
+	}
+
 	list := make([]CouponItem, 0, len(coupons))
 	for _, cp := range coupons {
-		list = append(list, toCouponItem(cp))
+		takerName := ""
+		if cp.IsTaken() {
+			takerName = takerMap[cp.Taker]
+		}
+		list = append(list, toCouponItem(cp, takerName))
 	}
 
 	utils.Resp(0, "success", gin.H{
@@ -262,7 +285,15 @@ func detailHandler(c *gin.Context) {
 		return
 	}
 
-	utils.Resp(0, "success", toCouponItem(coupon)).Success(c)
+	// 查询领取者信息
+	takerName := ""
+	if coupon.IsTaken() {
+		if taker, err := db.GetUserById(c.Request.Context(), coupon.Taker); err == nil {
+			takerName = taker.Name
+		}
+	}
+
+	utils.Resp(0, "success", toCouponItem(coupon, takerName)).Success(c)
 }
 
 // UpdateReq 更新卡券请求

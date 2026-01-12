@@ -214,3 +214,13 @@ func GetOneAvailableCouponByType(ctx context.Context, couponType int) (*Coupon, 
 	}
 	return &coupon, nil
 }
+
+// GetLastTakenCouponByTakerAndType 获取用户最后领取的指定类型卡券
+func GetLastTakenCouponByTakerAndType(ctx context.Context, taker int64, couponType int) (*Coupon, error) {
+	var coupon Coupon
+	err := getDb(ctx).Where("taker = ? AND type = ?", taker, couponType).Order("updated_at DESC").First(&coupon).Error
+	if err != nil {
+		return nil, err
+	}
+	return &coupon, nil
+}
