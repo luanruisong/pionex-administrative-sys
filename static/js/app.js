@@ -830,15 +830,27 @@ async function confirmApplyCoupon() {
 
         if (data.code === 0) {
             closeApplyCouponModal();
-            toast('申领成功！', 'success');
 
-            // 显示领取到的卡券详情
-            showTakenCouponResult(data.data);
+            // 显示成功弹窗
+            showResultModal({
+                success: true,
+                title: '领取成功',
+                message: '卡券已成功领取，点击确定查看详情',
+                onClose: () => {
+                    // 关闭弹窗后显示卡券详情
+                    showTakenCouponResult(data.data);
+                }
+            });
 
             // 刷新我的卡券列表
             await loadMyCoupons();
         } else {
-            toast(data.msg || '申领失败', 'error');
+            // 显示失败弹窗
+            showResultModal({
+                success: false,
+                title: '领取失败',
+                message: data.msg || '申领失败，请稍后重试'
+            });
         }
     } finally {
         setBtnLoading(btn, false);

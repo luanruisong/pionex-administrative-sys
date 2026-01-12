@@ -85,3 +85,53 @@ function formatPrice(price) {
     if (isNaN(num)) return price;
     return (num * 100).toFixed(1) + '%';
 }
+
+// 结果弹窗（带图片）
+function showResultModal(options) {
+    const { success, title, message, onClose } = options;
+
+    // 创建弹窗元素
+    let overlay = document.getElementById('resultModalOverlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'resultModalOverlay';
+        overlay.className = 'result-modal-overlay';
+        overlay.innerHTML = `
+            <div class="result-modal">
+                <div id="resultModalTitle" class="result-modal-title"></div>
+                <img id="resultModalImage" class="result-modal-image" src="" alt="">
+                <div id="resultModalMessage" class="result-modal-message"></div>
+                <button id="resultModalBtn" class="result-modal-btn">确定</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    }
+
+    // 设置内容
+    const titleEl = document.getElementById('resultModalTitle');
+    const imageEl = document.getElementById('resultModalImage');
+    const messageEl = document.getElementById('resultModalMessage');
+    const btnEl = document.getElementById('resultModalBtn');
+
+    titleEl.textContent = title || (success ? '领取成功' : '领取失败');
+    titleEl.className = 'result-modal-title ' + (success ? 'success' : 'error');
+
+    // 设置图片
+    imageEl.src = success ? '/static/image/ganbei.png' : '/static/image/iam_dead.png';
+
+    messageEl.textContent = message || '';
+
+    // 显示弹窗
+    overlay.classList.add('show');
+
+    // 绑定关闭事件
+    const closeModal = () => {
+        overlay.classList.remove('show');
+        if (onClose) onClose();
+    };
+
+    btnEl.onclick = closeModal;
+    overlay.onclick = (e) => {
+        if (e.target === overlay) closeModal();
+    };
+}

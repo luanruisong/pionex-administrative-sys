@@ -123,3 +123,88 @@ body {
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
+
+/* 结果弹窗 */
+.result-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.result-modal-overlay.show {
+    display: flex;
+}
+
+.result-modal {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    max-width: 360px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalPopIn 0.3s ease;
+}
+
+@keyframes modalPopIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.result-modal-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.result-modal-title.success {
+    color: #52c41a;
+}
+
+.result-modal-title.error {
+    color: #ff4d4f;
+}
+
+.result-modal-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.result-modal-message {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.result-modal-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 48px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.result-modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}

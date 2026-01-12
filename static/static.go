@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//go:embed html/** css/** js/**
+//go:embed html/** css/** js/** image/**
 var StaticFS embed.FS
 
 // fallback 路径，找不到文件时跳转到这里
