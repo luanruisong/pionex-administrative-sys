@@ -29,7 +29,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             localStorage.setItem('role', String(data.data.role || 0));
             localStorage.setItem('user_name', data.data.name || '');
             setTimeout(() => {
-                window.location.href = '/static/html/index.html';
+                window.location.href = '/static/html/main.html';
             }, 800);
         } else {
             toast(data.msg || '登录失败', 'error');
