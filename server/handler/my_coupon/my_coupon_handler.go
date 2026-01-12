@@ -200,8 +200,8 @@ func takeHandler(c *gin.Context) {
 			remaining := 12*time.Hour - elapsed
 			hours := int(remaining.Hours())
 			minutes := int(remaining.Minutes()) % 60
-			utils.Resp(400, "领取过于频繁，请稍后再试", gin.H{
-				"message":           "同一类型卡券12小时内只能领取一张",
+			utils.Resp(400, "每天只能领1张哦", gin.H{
+				"message":           "每天只能领1张哦",
 				"remaining_hours":   hours,
 				"remaining_minutes": minutes,
 			}).Fail(c)

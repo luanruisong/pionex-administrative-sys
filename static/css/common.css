@@ -208,3 +208,15 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
+
+/* 手机端结果弹窗适配 */
+@media (max-width: 768px) {
+    .result-modal {
+        padding: 24px;
+    }
+
+    .result-modal-image {
+        width: 150px;
+        height: 150px;
+    }
+}

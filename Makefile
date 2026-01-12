@@ -46,13 +46,8 @@ build-darwin-arm64:
 	@mkdir -p $(BUILD_DIR)
 	GOOS=darwin GOARCH=arm64 go build $(LDFLAGS) -o $(BUILD_DIR)/$(BINARY_NAME)-darwin-arm64 $(MAIN_FILE)
 
-build-windows:
-	@echo "Building for windows/amd64..."
-	@mkdir -p $(BUILD_DIR)
-	GOOS=windows GOARCH=amd64 go build $(LDFLAGS) -o $(BUILD_DIR)/$(BINARY_NAME)-windows-amd64.exe $(MAIN_FILE)
-
 # 构建所有平台
-build-all: build-linux build-linux-arm64 build-darwin build-darwin-arm64 build-windows
+build-all: build-linux build-linux-arm64 build-darwin build-darwin-arm64
 	@echo "All platforms built successfully!"
 
 # 清理
